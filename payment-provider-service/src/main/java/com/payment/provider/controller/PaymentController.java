@@ -2,6 +2,7 @@ package com.payment.provider.controller;
 
 import com.payment.provider.service.PaymentService;
 import com.common.provider.entity.Payment;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import com.common.provider.util.CommonResult;
 
@@ -13,6 +14,9 @@ import javax.annotation.Resource;
  */
 @RestController
 public class PaymentController {
+
+    @Value("${server.port}")
+    private String serverPort;
 
     @Resource
     private PaymentService paymentService;
@@ -37,7 +41,7 @@ public class PaymentController {
         try{
             Payment payment = paymentService.findPaymentById(id);
             if(payment!=null){
-                return  new CommonResult(200, "查询成功!",payment);
+                return  new CommonResult(200, "查询成功!"+ serverPort,payment);
             }else{
                 return  new CommonResult(200, "无对应记录!" + id,null);
             }

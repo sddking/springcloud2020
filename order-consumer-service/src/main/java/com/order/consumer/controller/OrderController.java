@@ -13,7 +13,7 @@ import javax.annotation.Resource;
  */
 @RestController
 public class OrderController {
-    private  String PAYMENT_SERVICE ="http://localhost:8001/";
+    private  String PAYMENT_SERVICE ="http://payment-provider-service/";
 
     @Resource
     private RestTemplate restTemplate;

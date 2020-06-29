@@ -1,5 +1,3 @@
-server:
-  port: 8001
 spring:
   application:
     name: payment-provider-service
@@ -26,3 +24,14 @@ spring:
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.common.provider.entity
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    lease-renewal-interval-in-seconds: 1
+    lease-expiration-duration-in-seconds: 2
+  client:
+    service-url:
+      defaultZone: http://server1:8003/eureka/,http://server2:8004/eureka/
+    fetch-registry: true
+    register-with-eureka: true

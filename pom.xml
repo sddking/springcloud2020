@@ -11,6 +11,7 @@
         <module>payment-provider-service</module>
         <module>order-consumer-service</module>
         <module>common-service</module>
+        <module>eureka-server</module>
     </modules>
     <packaging>pom</packaging>
 

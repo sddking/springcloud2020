@@ -3,3 +3,14 @@ server:
 spring:
   application:
     name: order-consumer-service
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    lease-renewal-interval-in-seconds: 1
+    lease-expiration-duration-in-seconds: 2
+  client:
+    service-url:
+      defaultZone: http://server1:8003/eureka/,http://server2:8004/eureka/
+    fetch-registry: true
+    register-with-eureka: true
