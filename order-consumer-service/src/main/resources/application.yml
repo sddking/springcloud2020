@@ -14,3 +14,9 @@ eureka:
       defaultZone: http://server1:8003/eureka/,http://server2:8004/eureka/
     fetch-registry: true
     register-with-eureka: true
+ribbon:
+  ReadTimeout: 5000
+  ConnectTimeout: 5000
+feign:
+  hystrix:
+    enabled: true

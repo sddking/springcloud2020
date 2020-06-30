@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
  * @author 180465
  * @date 2020/6/28 21:48
  */
-@Configuration
+//@Configuration
 public class ApplicationContextConfig {
     @Bean
     @LoadBalanced

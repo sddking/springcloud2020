@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import com.common.provider.util.CommonResult;
 
 import javax.annotation.Resource;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author 180465
@@ -38,6 +39,11 @@ public class PaymentController {
 
     @GetMapping(value = "/payment/get/{id}")
     public  CommonResult getPaymentById(@PathVariable("id")Long id){
+        try{
+            TimeUnit.SECONDS.sleep(6);
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
         try{
             Payment payment = paymentService.findPaymentById(id);
             if(payment!=null){
