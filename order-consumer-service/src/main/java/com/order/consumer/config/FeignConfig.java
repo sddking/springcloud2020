@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @author 180465
+<<<<<<< HEAD
  * @date 2020/6/30 16:27
  */
 @Configuration
@@ -21,5 +22,14 @@ public class FeignConfig {
     @Bean
     Logger.Level feignLoggerLevel(){
         return Logger.Level.FULL;
+=======
+ * @date 2020/6/30 21:36
+ */
+@Configuration
+public class FeignConfig {
+    @Bean
+    public Logger.Level feignLoggerLevel(){
+        return  Logger.Level.FULL;
+>>>>>>> b1528ad452c7b706f99cb12c2303ebcf9a659cdc
     }
 }

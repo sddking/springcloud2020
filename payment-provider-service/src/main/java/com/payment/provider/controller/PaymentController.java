@@ -40,6 +40,11 @@ public class PaymentController {
     @GetMapping(value = "/payment/get/{id}")
     public  CommonResult getPaymentById(@PathVariable("id")Long id){
         try{
+            TimeUnit.SECONDS.sleep(6);
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        try{
             Payment payment = paymentService.findPaymentById(id);
             if(payment!=null){
                 return  new CommonResult(200, "查询成功!"+ serverPort,payment);

@@ -10,6 +10,7 @@
         <id column="id" property="id" jdbcType="BIGINT"></id>
         <id column="serial" property="serial" jdbcType="VARCHAR"></id>
     </resultMap>
+
     <select id="findPaymentById" parameterType="Long" resultMap="BaseResultMap">
         select id,serial FROM payment WHERE id = #{id};
     </select>

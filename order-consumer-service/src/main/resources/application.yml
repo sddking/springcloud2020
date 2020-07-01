@@ -17,6 +17,12 @@ eureka:
 ribbon:
   ReadTimeout: 5000
   ConnectTimeout: 5000
+<<<<<<< HEAD
 logging:
   level:
     com.order.consumer.services.OrderService: debug
+=======
+feign:
+  hystrix:
+    enabled: true
+>>>>>>> b1528ad452c7b706f99cb12c2303ebcf9a659cdc
