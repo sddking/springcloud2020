@@ -16,6 +16,11 @@ public class OrderFeignFallback implements OrderFeignService {
     }
 
     public CommonResult create(Payment payment) {
+
         return new CommonResult(500,"create Fallback");
+    }
+
+    public String getTimeOut() {
+        return "Get TimeOut Fallback";
     }
 }

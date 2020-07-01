@@ -23,3 +23,9 @@ logging:
 feign:
   hystrix:
     enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        # 开启监控端点
+        include: hystrix.stream

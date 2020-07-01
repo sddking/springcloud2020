@@ -12,6 +12,7 @@
         <module>order-consumer-service</module>
         <module>common-service</module>
         <module>eureka-server</module>
+        <module>hystrix-dashboard</module>
     </modules>
     <packaging>pom</packaging>
 

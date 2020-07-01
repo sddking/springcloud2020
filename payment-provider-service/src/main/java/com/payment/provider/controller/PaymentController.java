@@ -2,6 +2,7 @@ package com.payment.provider.controller;
 
 import com.payment.provider.service.PaymentService;
 import com.common.provider.entity.Payment;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import com.common.provider.util.CommonResult;
@@ -14,6 +15,7 @@ import java.util.concurrent.TimeUnit;
  * @date 2020/6/28 16:34
  */
 @RestController
+@Slf4j
 public class PaymentController {
 
     @Value("${server.port}")
@@ -64,5 +66,12 @@ public class PaymentController {
             ex.printStackTrace();
         }
         return serverPort;
+    }
+
+    @GetMapping(value = "/payment/circuit/{id}")
+    public String getCircuitBreaker(@PathVariable("id")Integer id){
+        String result = paymentService.paymentCircuitBreaker(id);
+        log.info("**********result**********" + result);
+        return result;
     }
 }

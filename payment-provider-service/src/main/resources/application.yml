@@ -35,3 +35,9 @@ eureka:
       defaultZone: http://server1:8003/eureka/,http://server2:8004/eureka/
     fetch-registry: true
     register-with-eureka: true
+management:
+  endpoints:
+    web:
+      exposure:
+        # 开启监控端点
+        include: hystrix.stream

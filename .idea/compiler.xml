@@ -7,15 +7,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="common-service" />
-        <module name="eureka-server" />
         <module name="order-consumer-service" />
+        <module name="eureka-server" />
         <module name="payment-provider-service" />
+        <module name="hystrix-dashboard" />
+        <module name="common-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="common-service" target="1.8" />
       <module name="eureka-server" target="1.8" />
+      <module name="hystrix-dashboard" target="1.8" />
       <module name="order-consumer-service" target="1.8" />
       <module name="payment-provider-service" target="1.8" />
       <module name="springcloud2020" target="1.8" />

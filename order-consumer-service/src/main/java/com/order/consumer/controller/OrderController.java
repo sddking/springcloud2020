@@ -2,7 +2,6 @@ package com.order.consumer.controller;
 
 import com.common.provider.entity.Payment;
 import com.order.consumer.loadbalancer.MyLoadBalancer;
-import com.order.consumer.services.OrderService;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import com.order.consumer.service.OrderFeignService;
@@ -33,13 +32,10 @@ public class OrderController {
     //@Resource
     //private DiscoveryClient discoveryClient;
 
-    @Resource
-    private OrderService orderService;
-
     //private  String PAYMENT_SERVICE ="http://payment-provider-service/";
 
-//    @Resource
-//    private RestTemplate restTemplate;
+    //@Resource
+    //private RestTemplate restTemplate;
 
     @Resource
     private OrderFeignService orderFeignService;
@@ -60,13 +56,13 @@ public class OrderController {
 //            URI uri = serviceInstance.getUri();
 //            return restTemplate.getForObject(uri + "/payment/get/" + id, CommonResult.class);
 //        }
-        return orderService.getPayment(id);
+        return orderFeignService.getPaymentById(id);
     }
 
     @GetMapping(value = "/order/get/timeout")
     public String getTimeOut(){
         //openfeign的默认等待时间为1s
-        return orderService.getTimeOut();
+        return orderFeignService.getTimeOut();
 
     }
 
