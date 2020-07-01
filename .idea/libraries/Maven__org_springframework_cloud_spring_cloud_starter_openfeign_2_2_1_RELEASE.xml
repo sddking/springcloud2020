@@ -1,23 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: org.springframework.cloud:spring-cloud-starter-openfeign:2.2.1.RELEASE">
     <CLASSES>
-<<<<<<< HEAD
-      <root url="jar://$PROJECT_DIR$/../../../Program Files/Java/repository/org/springframework/cloud/spring-cloud-starter-openfeign/2.2.1.RELEASE/spring-cloud-starter-openfeign-2.2.1.RELEASE.jar!/" />
+      <root url="jar://$USER_HOME$/.m2/repository/org/springframework/cloud/spring-cloud-starter-openfeign/2.2.1.RELEASE/spring-cloud-starter-openfeign-2.2.1.RELEASE.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$PROJECT_DIR$/../../../Program Files/Java/repository/org/springframework/cloud/spring-cloud-starter-openfeign/2.2.1.RELEASE/spring-cloud-starter-openfeign-2.2.1.RELEASE-javadoc.jar!/" />
+      <root url="jar://$USER_HOME$/.m2/repository/org/springframework/cloud/spring-cloud-starter-openfeign/2.2.1.RELEASE/spring-cloud-starter-openfeign-2.2.1.RELEASE-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$PROJECT_DIR$/../../../Program Files/Java/repository/org/springframework/cloud/spring-cloud-starter-openfeign/2.2.1.RELEASE/spring-cloud-starter-openfeign-2.2.1.RELEASE-sources.jar!/" />
-=======
-      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-starter-openfeign/2.2.1.RELEASE/spring-cloud-starter-openfeign-2.2.1.RELEASE.jar!/" />
-    </CLASSES>
-    <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-starter-openfeign/2.2.1.RELEASE/spring-cloud-starter-openfeign-2.2.1.RELEASE-javadoc.jar!/" />
-    </JAVADOC>
-    <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-starter-openfeign/2.2.1.RELEASE/spring-cloud-starter-openfeign-2.2.1.RELEASE-sources.jar!/" />
->>>>>>> b1528ad452c7b706f99cb12c2303ebcf9a659cdc
+      <root url="jar://$USER_HOME$/.m2/repository/org/springframework/cloud/spring-cloud-starter-openfeign/2.2.1.RELEASE/spring-cloud-starter-openfeign-2.2.1.RELEASE-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
