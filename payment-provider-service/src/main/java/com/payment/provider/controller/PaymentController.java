@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import com.common.provider.util.CommonResult;
 
 import javax.annotation.Resource;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author 180465
@@ -48,5 +49,15 @@ public class PaymentController {
         }catch (Exception ex){
             return  new CommonResult(500, "查询失败!",null);
         }
+    }
+
+    @GetMapping(value = "/payment/get/timeout")
+    public String getTimeOut(){
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        return serverPort;
     }
 }
