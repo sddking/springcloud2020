@@ -7,13 +7,23 @@ spring:
     config:
       server:
         git:
-          uri: http://mobileapi.gree.com:3000/180465/spconfig.git
-          username: 180465
-          password: 920515
+          uri: https://github.com/sddking/springcloudconfig2020.git
+          username: sddking
+          password: Qwe!313616
           search-paths:
-            - spconfig
+            - springcloudconfig2020
           skip-ssl-validation: true
       label: master
+    #消息总线开启
+    bus:
+      enabled: true
+      trace:
+        enabled: true
+  rabbitmq:
+    username: guest
+    port: 5672
+    password: guest
+    host: localhost
 eureka:
   instance:
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
@@ -24,3 +34,10 @@ eureka:
       defaultZone: http://server1:8003/eureka/,http://server2:8004/eureka/
     fetch-registry: true
     register-with-eureka: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "bus-refresh"   #开启消息总线的刷新功能
+        #通过向config-server发送curl -X POST http://localhost:8015/actuator/bus-refresh达到通知所有config-client
+        #定点发送curl -X POST http://localhost:8015/actuator/bus-refresh/{destination}达到通知单个节点，destination格式为服务名+端口号，例order-consumer-service:8002

@@ -2,9 +2,11 @@ package com.order.consumer.controller;
 
 import com.common.provider.entity.Payment;
 import com.order.consumer.loadbalancer.MyLoadBalancer;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import com.order.consumer.service.OrderFeignService;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import com.common.provider.util.CommonResult;
@@ -19,7 +21,11 @@ import java.util.concurrent.TimeUnit;
  * @date 2020/6/28 22:28
  */
 @RestController
+@RefreshScope
 public class OrderController {
+
+    @Value("${server.name}")
+    private String name;
 
     //private  String PAYMENT_SERVICE ="http://payment-provider-service/";
 
@@ -65,5 +71,11 @@ public class OrderController {
         return orderFeignService.getTimeOut();
 
     }
+
+    @GetMapping(value = "/order/get/config")
+    public String getConfigInfo(){
+        return name;
+    }
+
 
 }

@@ -1,0 +1,61 @@
+server:
+  port: 8002
+spring:
+  application:
+    name: order-consumer-service
+  cloud:
+    config:
+      label: master                                   #分支
+      profile: dev                                    #读取的后缀
+      name: order-service,payment-service             #配置文件名称
+      discovery:
+        enabled: true
+        service-id: config-server
+      fail-fast: true
+    stream:
+      binders:
+        defaultRabbit:              #定义名称，用于下面的binding整合
+          type: rabbit               #消息组件类型
+          environment:              #设置rabbitmq的相关环境变量
+            spring:
+              rabbitmq:
+                host: localhost
+                port: 5672
+                username: guest
+                password: guest
+      bindings:  #服务整合处理
+          input:  #通道的名字,也表示为消息的消费者
+            destination: studyExchange    #表示使用的Exchange名称定义
+            content-type: application/json #设置消息的类型，此次为json，文本则设置为text/plain
+            binder: defaultRabbit
+  rabbitmq:
+    username: guest
+    port: 5672
+    password: guest
+    host: localhost
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    lease-renewal-interval-in-seconds: 1
+    lease-expiration-duration-in-seconds: 2
+  client:
+    service-url:
+      defaultZone: http://server1:8003/eureka/,http://server2:8004/eureka/
+    fetch-registry: true
+    register-with-eureka: true
+ribbon:
+  ReadTimeout: 5000
+  ConnectTimeout: 5000
+logging:
+  level:
+    com.order.consumer.services.OrderService: debug
+feign:
+  hystrix:
+    enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        # 开启监控端点
+        include: "*"

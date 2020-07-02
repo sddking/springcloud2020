@@ -20,7 +20,24 @@ spring:
     testOnReturn: false
     poolPreparedStatements: false
     maxPoolPreparedStatementPerConnectionSize: 200
-    maxOpenPreparedStatements: 0  #同一时间能够从语句池里分配的已备语句的最大数量。设置为0时表示无限制。
+    maxOpenPreparedStatements: 0   #同一时间能够从语句池里分配的已备语句的最大数量。设置为0时表示无限制。
+  cloud:
+    stream:                          #引入消息驱动Stream处理跨MQ平台的消息,仅支持RabbitMQ和Kafka
+      binders:
+        defaultRabbit:              #定义名称，用于下面的binding整合
+          type: rabbit               #消息组件类型
+          environment:              #设置rabbitmq的相关环境变量
+            spring:
+              rabbitmq:
+                host: localhost
+                port: 5672
+                username: guest
+                password: guest
+      bindings:  #服务整合处理
+        output:  #通道的名字,也表示为消息的生产者
+          destination: studyExchange    #表示使用的Exchange名称定义
+          content-type: application/json #设置消息的类型，此次为json，文本则设置为text/plain
+          binder: defaultRabbit
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.common.provider.entity
