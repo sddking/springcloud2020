@@ -1,0 +1,26 @@
+server:
+  port: 8015
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: http://mobileapi.gree.com:3000/180465/spconfig.git
+          username: 180465
+          password: 920515
+          search-paths:
+            - spconfig
+          skip-ssl-validation: true
+      label: master
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    lease-renewal-interval-in-seconds: 1
+    lease-expiration-duration-in-seconds: 2
+  client:
+    service-url:
+      defaultZone: http://server1:8003/eureka/,http://server2:8004/eureka/
+    fetch-registry: true
+    register-with-eureka: true

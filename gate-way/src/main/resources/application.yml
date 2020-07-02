@@ -1,0 +1,42 @@
+server:
+  port: 8014
+spring:
+  application:
+    name: gate-way
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: order-service
+          uri: lb://order-consumer-service
+          order: 0
+          predicates:
+            - Path=/order-api/**
+            - Method=GET
+        - id: payment-service
+          uri: lb://payment-provider-service
+          order: 0
+          predicates:
+            - Path=/payment-api/**
+            - Method=GET
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    lease-renewal-interval-in-seconds: 1
+    lease-expiration-duration-in-seconds: 2
+  client:
+    service-url:
+      defaultZone: http://server1:8003/eureka/,http://server2:8004/eureka/
+    fetch-registry: true
+    register-with-eureka: true
+management:
+  endpoint:
+    gateway:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
