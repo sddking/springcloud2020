@@ -1,6 +1,9 @@
-server:
-  port: 8002
 spring:
+  zipkin:
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      probability: 0.8  #采样率
   application:
     name: order-consumer-service
   cloud:
@@ -28,6 +31,7 @@ spring:
             destination: studyExchange    #表示使用的Exchange名称定义
             content-type: application/json #设置消息的类型，此次为json，文本则设置为text/plain
             binder: defaultRabbit
+            group: order-consumer      #消息的分组,同一个组能够避免消息重复消费,不同组会出现重复
   rabbitmq:
     username: guest
     port: 5672
