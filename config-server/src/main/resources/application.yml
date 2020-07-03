@@ -9,7 +9,7 @@ spring:
         git:
           uri: https://github.com/sddking/springcloudconfig2020.git
           username: sddking
-          password: Qwe!313616
+          password: *******
           search-paths:
             - springcloudconfig2020
           skip-ssl-validation: true
